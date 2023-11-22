@@ -1,0 +1,40 @@
+pipeline {
+    agent any
+    tools {
+        maven 'maven-b'
+    }
+
+    stages {
+        stage('Build Jar') {
+            steps {
+                echo 'Building the application...'
+                sh 'mvn package'
+            }
+        }
+
+        stage('Build Image') {
+            steps {
+                echo 'Building Image...'
+                withCredentials([usernamePassword(credentialsId: 'docker-hub-cred', usernameVariable: 'User', passwordVariable: 'Pass')]) {
+                    sh 'docker build -t gbaderobusola/busola:tolani-1.0 .'
+                    sh "echo $pass | docker login -u $User --password-stdin"
+                    sh 'docker push gbaderobusola/busola:tolani-1.0'
+                }
+            }
+        }
+    }
+
+    post {
+        always {
+            echo 'This will always run, regardless of the pipeline result.'
+        }
+
+        success {
+            echo 'The pipeline has succeeded!'
+        }
+
+        failure {
+            echo 'The pipeline has failed.'
+        }
+    }
+}
