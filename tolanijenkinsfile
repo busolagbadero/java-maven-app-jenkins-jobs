@@ -9,11 +9,6 @@ pipeline {
             }
         }
         stage('build') {
-            when {
-                expression {
-                    BRANCH_NAME == 'master'
-                }
-            }
             steps {
                 script {
                     echo "building the application..."
