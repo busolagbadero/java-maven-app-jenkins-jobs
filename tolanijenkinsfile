@@ -38,7 +38,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                  buildimage()
+                  buildimage 'gbaderobusola/busola:tolani-2.1'
                 }
             }
         }
