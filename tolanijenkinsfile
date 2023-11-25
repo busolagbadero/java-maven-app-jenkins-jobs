@@ -1,3 +1,4 @@
+
 @Library('jenkins-shared-library@master')_
 
 pipeline {
@@ -8,20 +9,27 @@ pipeline {
 
     stages {
 
+=======
         stage('Init') {
             steps {
                 script {
                     // Load the Groovy script from the library
                     gv = load "script.groovy"
                     echo 'Loading Groovy script'
+
                 }
+                echo 'loading groovy script'
+                
             }
         }
+
+
 
         stage('Build Jar') {
             steps {
                 script {
                     // Call the buildJar function from the loaded script
+
                     gv.buildJar()
                 }             
             }
@@ -30,7 +38,8 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                    // Call the buildImage function from the library
+
+
                     buildImage()
                 }
             }
