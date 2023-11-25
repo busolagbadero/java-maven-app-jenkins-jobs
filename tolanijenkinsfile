@@ -30,7 +30,7 @@ pipeline {
                 script {
                     // Call the buildJar function from the loaded script
 
-                    gv.buildJar()
+                    buildJar()
                 }             
             }
         }
