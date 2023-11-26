@@ -38,7 +38,7 @@ pipeline {
         stage('Build Image') {
             steps {
                 script {
-                  buildimage 'gbaderobusola/busola:tolani-3.1 .'
+                  buildimage 'gbaderobusola/busola:tolani-3.1'
                   dockerLogin()
                   dockerPush 'gbaderobusola/busola:tolani-3.1'
                 }
