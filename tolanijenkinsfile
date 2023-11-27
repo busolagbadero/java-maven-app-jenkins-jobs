@@ -35,7 +35,7 @@ pipeline {
             }
         }
 
-        stage('Build and Push my Image') {
+        stage('Build, Login and Push Push my Image') {
             steps {
                 script {
                   buildimage 'gbaderobusola/busola:tolani-3.1'
