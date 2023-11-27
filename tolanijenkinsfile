@@ -56,7 +56,7 @@ pipeline {
         }
 
         failure {
-            echo 'The pipeline has failed.'
+            echo 'The pipeline has faileddd.'
         }
     }
 }
